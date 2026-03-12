@@ -39,7 +39,7 @@ int main()
 {
 	Livre bibliotheque[100];
 	int nblivre = 0;
-	  
+	int i = 0;
 
 
 	puts("====== BIBLIOTHEQUE ======\n");
@@ -54,7 +54,23 @@ int main()
 
 	ajoutlivre(bibliotheque, &nblivre);
 	printf("%d\n", &nblivre);
-	
+
+	ajoutlivre(bibliotheque, &nblivre);
+	printf("%d\n", &nblivre);
+
+	 
 	printf("Le nombre de livre dans la bibliotheque est de: %d\n", nblivre);
+	printf("\nVoici la liste des livres dans la bibliotheque: \n");
+
+	for (int i = 0; i < nblivre; i++);
+	{
+		printf("Titre: %s\n", bibliotheque[i].nom);
+		printf("Auteur: %s\n", bibliotheque[i].auteur);
+		printf("Annee d'edition: %d\n", bibliotheque[i].annee);
+		printf("\n");
+
+	}
+	printf("\n");
+	
 	return 0;
 }
