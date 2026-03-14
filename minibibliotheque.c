@@ -23,6 +23,7 @@ void ajoutlivre(Livre bibliotheque[], int *nblivre)
 			printf("Ce livre existe deja !!\n");
 			return;
 		}
+
 	}
 	printf("Saisir le nom l'auteur: ");
 	gets(bibliotheque[*nblivre].auteur);
@@ -59,42 +60,24 @@ int main()
 		int nb = 0;
 		puts("Entrez le nombre de livre à ajouter: \n");
 		scanf("%d", &nb);
-		for (int j = 0; j < nb; j++);
+		getchar();
+		for (int j = 0; j < nb; j++)
 		{
 			ajoutlivre(bibliotheque, &nblivre);
 		}
 		printf("%d\n", nblivre);
-		break;
-	}
+	
+	} break;
 
-	case 2:
-	{
-		printf("Voici la liste des livres dans la bibliotheque: \n");
-		for (int i = 0; i < nblivre; i++);
-		{
-			printf("Titre: %s\n", bibliotheque[i].nom);
-			printf("Auteur: %s\n", bibliotheque[i].auteur);
-			printf("Annee d'edition: %d\n", bibliotheque[i].annee);
-			printf("\n");
-
-		}
-		break;
-	}
+	
 	default:
 		printf("Choix invalide !!\n");
 	}
 	 
 	printf("Le nombre de livre dans la bibliotheque est de: %d\n", nblivre);
-	printf("\nVoici la liste des livres dans la bibliotheque: \n");
+	// printf("\nVoici la liste des livres dans la bibliotheque: \n");
 
-	for (int i = 0; i < nblivre; i++)
-	{
-		printf("Titre: %s\n", bibliotheque[i].nom);
-		printf("Auteur: %s\n", bibliotheque[i].auteur);
-		printf("Annee d'edition: %d\n", bibliotheque[i].annee);
-		printf("\n");
-
-	}
+	
 	printf("\n");
 	
 	return 0;
