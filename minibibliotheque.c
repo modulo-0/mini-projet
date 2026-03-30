@@ -13,7 +13,7 @@ typedef struct {
 
 void ajoutlivre(Livre bibliotheque[], int *nblivre) 
 {
-	printf("Saisir le titre du livre:  \n");
+	printf("Saisir le titre du livre:  ");
 	gets(bibliotheque[*nblivre].nom);
 
 	for (int i = 0; i < *nblivre; i++)
