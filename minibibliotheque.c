@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 
 
@@ -35,6 +36,32 @@ void ajoutlivre(Livre bibliotheque[], int *nblivre)
 	(*nblivre)++;
 }
 
+void afficherlivre(Livre bibliotheque[], int nblivre) 
+{
+	if (nblivre == 0) {
+		printf("Aucun livre dans la bibliotheque.\n");
+		return;
+	}
+
+	for (int i = 0; i < nblivre; i++) {
+		printf("Livre %d:\n", i + 1);
+		printf("Titre: %s\n", bibliotheque[i].nom);
+		printf("Auteur: %s\n", bibliotheque[i].auteur);
+		printf("Annee d'edition: %d\n", bibliotheque[i].annee);
+		printf("\n");
+	}
+}
+
+/* bool fermeture(char *response) 
+{
+	if (strcmp(response, "non") == 0) {
+		exit(0);
+	}
+	return false;
+} */
+
+
+
 
 int main() 
 {
@@ -42,43 +69,57 @@ int main()
 	int nblivre = 0;
 	int choix;
 	int i = 0;
+	bool exit = false;
+	char reponse[4];
 
+	while(!exit) {
+		puts("====== BIBLIOTHEQUE ======\n");
+		puts("1. Ajouter un livre \n");
+		puts("2. Afficher un livre \n");
+		puts("3. Rechercher un livre \n");
+		puts("4. Supprimer un livre \n");
+		puts("Votre choix \n");
 
-	puts("====== BIBLIOTHEQUE ======\n");
-	puts("1. Ajouter un livre \n");
-	puts("2. Afficher un livre \n");
-	puts("3. Rechercher un livre \n");
-	puts("4. Supprimer un livre \n");
-	puts("Votre choix \n");
+		scanf("%d", &choix);
 
-	scanf("%d", &choix);
-
-	switch (choix)
-	{
-	case 1:
-	{
-		int nb = 0;
-		puts("Entrez le nombre de livre à ajouter: \n");
-		scanf("%d", &nb);
-		getchar();
-		for (int j = 0; j < nb; j++)
+		switch (choix)
 		{
-			ajoutlivre(bibliotheque, &nblivre);
+		case 1:
+		{
+			int nb = 0;
+			puts("Entrez le nombre de livre à ajouter: \n");
+			scanf("%d", &nb);
+			getchar();
+			for (int j = 0; j < nb; j++)
+			{
+				ajoutlivre(bibliotheque, &nblivre);
+			}
+			printf("%d\n", nblivre);
+			printf("Entrez oui pour continuer ou non pour quitter: \n");
+			scanf("%s", reponse);
+			if (strcmp(reponse, "non") == 0) {
+				exit = true;
+			}
+		
+		} break;
+
+		case 2:
+		{
+			puts("Voici la liste des livres dans la bibliotheque: \n");
+			afficherlivre(bibliotheque, nblivre);
+		} break;
+
+		
+		
+		default:
+			printf("Choix invalide !!\n");
 		}
-		printf("%d\n", nblivre);
-	
-	} break;
+		
+		printf("Le nombre de livre dans la bibliotheque est de: %d\n", nblivre);
+		// printf("\nVoici la liste des livres dans la bibliotheque: \n");
 
-	
-	default:
-		printf("Choix invalide !!\n");
+		
+		printf("\n");
 	}
-	 
-	printf("Le nombre de livre dans la bibliotheque est de: %d\n", nblivre);
-	// printf("\nVoici la liste des livres dans la bibliotheque: \n");
-
-	
-	printf("\n");
-	
 	return 0;
 }
