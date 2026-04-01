@@ -52,7 +52,26 @@ void afficherlivre(Livre bibliotheque[], int nblivre)
 	}
 }
 
-/* bool fermeture(char *response) 
+void rechercherlivre(char *recherche, Livre *bibliotheque, int *nblivre)
+{
+	int i;
+	for (i=0; i < *nblivre; i++) {
+		if (strcmp(recherche, bibliotheque[i].nom) == 0)
+		{
+			printf("livre trouvé !\n");
+			printf("Voici le livre: \n");
+			printf("Livre %d:\n", i + 1);
+			printf("Titre: %s\n", bibliotheque[i].nom);
+			printf("Auteur: %s\n", bibliotheque[i].auteur);
+			printf("Annee d'edition: %d\n", bibliotheque[i].annee);
+			printf("\n");
+			return;
+		}
+	}
+	printf("livre non trouvé!");
+}
+
+/* bool quitter(char *response) 
 {
 	if (strcmp(response, "non") == 0) {
 		exit(0);
@@ -71,6 +90,8 @@ int main()
 	int i = 0;
 	bool exit = false;
 	char reponse[4];
+	char recherche[50];
+	
 
 	while(!exit) {
 		puts("====== BIBLIOTHEQUE ======\n");
@@ -108,6 +129,14 @@ int main()
 			puts("Voici la liste des livres dans la bibliotheque: \n");
 			afficherlivre(bibliotheque, nblivre);
 		} break;
+
+		case 3:
+		{
+			puts("Entrez le livre à chercher: ");
+			gets(recherche);
+			rechercherlivre(recherche, bibliotheque, nblivre);
+			
+		}break;
 
 		
 		
