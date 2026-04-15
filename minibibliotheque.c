@@ -15,7 +15,7 @@ typedef struct {
 void ajoutlivre(Livre bibliotheque[], int *nblivre) 
 {
 	printf("Saisir le titre du livre:  ");
-	gets(bibliotheque[*nblivre].nom);
+	fgets(bibliotheque[*nblivre].nom, sizeof(bibliotheque[*nblivre].nom), stdin);
 
 	for (int i = 0; i < *nblivre; i++)
 	{
@@ -27,7 +27,7 @@ void ajoutlivre(Livre bibliotheque[], int *nblivre)
 
 	}
 	printf("Saisir le nom l'auteur: ");
-	gets(bibliotheque[*nblivre].auteur);
+	fgets(bibliotheque[*nblivre].auteur, sizeof(bibliotheque[*nblivre].auteur), stdin);
 
 	printf("Saisir l'annee d'edition: ");
 	scanf("%d", &bibliotheque[*nblivre].annee);
@@ -52,10 +52,10 @@ void afficherlivre(Livre bibliotheque[], int nblivre)
 	}
 }
 
-void rechercherlivre(char *recherche, Livre *bibliotheque, int *nblivre)
+void rechercherlivre(char *recherche, Livre *bibliotheque, int nblivre)
 {
 	int i;
-	for (i=0; i < *nblivre; i++) {
+	for (i=0; i < nblivre; i++) {
 		if (strcmp(recherche, bibliotheque[i].nom) == 0)
 		{
 			printf("livre trouvé !\n");
@@ -133,7 +133,7 @@ int main()
 		case 3:
 		{
 			puts("Entrez le livre à chercher: ");
-			gets(recherche);
+			fgets(recherche, sizeof(recherche), stdin);
 			rechercherlivre(recherche, bibliotheque, nblivre);
 			
 		}break;
